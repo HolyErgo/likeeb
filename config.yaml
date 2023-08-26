@@ -1,5 +1,5 @@
 meta:
-  author: Nikservik
+  author: nikservik
   version: rev1.2
 units:
   column_stagger: 20.97
@@ -305,20 +305,12 @@ pcbs:
           hotswap: true
           diode: true
           diode_shift: [7.5, 0]
-          diode_via: true
-      column_routes:
-        what: colroute
-        where:
-          - /^matrix_.*_home/
-        params:
-          net: "{{column_net}}"
-          stagger: column_stagger
-          route_offset: 1.6
+          diode_via: false
       left_socket:
         what: clamshell_socket
         where:
           ref: matrix_index_home
-          shift: [0, -7]
+          shift: [0, -6.9]
           rotate: 180
         params:
           side: 'B'
@@ -343,20 +335,12 @@ pcbs:
           hotswap: true
           diode: true
           diode_shift: [7.5, 0]
-          diode_via: true
-      column_routes:
-        what: colroute
-        where:
-          - /mirror_matrix_.*_home/
-        params:
-          net: "{{column_net}}"
-          stagger: column_stagger
-          route_offset: 1.6
+          diode_via: false
       socket:
         what: clamshell_socket
         where:
           ref: mirror_matrix_index_home
-          shift: [0, -7]
+          shift: [0, -6.9]
           rotate: 180
         params:
           side: 'B'
@@ -399,6 +383,7 @@ pcbs:
           P8: 'RLT2'
           P9: 'RLT3'
           P10: 'RLT4'
+          BATN: 'GND'
       socket:
         what: clamshell_socket
         where:
@@ -439,7 +424,7 @@ pcbs:
           rotate: 90
         params:
           pos: 'BAT_P'
-          neg: 'BATN'
+          neg: 'GND'
       mounthole:
         what: mountinghole
         where:
@@ -477,7 +462,7 @@ pcbs:
           P9: 'RRT3'
           P10: 'RRT4'
           BATP: 'RBATP'
-          BATN: 'RBATN'
+          BATN: 'RGND'
           GND: 'RGND'
           RST: 'RRST'
           P0: 'RP0'
@@ -528,7 +513,7 @@ pcbs:
           rotate: 270
         params:
           pos: 'RBAT_P'
-          neg: 'RBATN'        
+          neg: 'RGND'        
       mounthole:
         what: mountinghole
         where:

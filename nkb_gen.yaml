@@ -1,0 +1,537 @@
+meta:
+  author: Nikservik
+  version: rev1.0
+units:
+  column_stagger: 20.97
+  sw: 18
+  sh: 16
+  mcu_width: 33
+  mcu_height: 21.6
+  mcu_x_offset: 0
+  xiao_width: 18.5
+  xiao_height: 21
+  xiao_x_offset: 1
+  thumbs_x_offset: 62
+  thumbs_y_offset: 49
+points:
+  zones:
+    matrix:
+      key.padding: column_stagger
+      anchor:
+        rotate: 10
+        shift: [100, -100]
+      mirror:
+        ref: matrix_inner_home
+        distance: u
+      columns:
+        pinky:
+          key:
+            column_net: C1
+            mirror.column_net: C10
+        ring:
+          key:
+            splay: -5
+            stagger: 11.395
+            spread: 21.556
+            column_net: C2
+            mirror.column_net: C9
+        middle:
+          key:
+            splay: -5
+            stagger: 3.297
+            spread: 21.411
+            column_net: C3
+            mirror.column_net: C8
+        index:
+          key:
+            stagger: -4
+            spread: u
+            column_net: C4
+            mirror.column_net: C7
+        inner:
+          key:
+            stagger: -7
+            spread: u
+            column_net: C5
+            mirror.column_net: C6
+      rows:
+        home:
+          row_net: RL2
+          mirror.row_net: RR2
+        top:
+          row_net: RL1
+          mirror.row_net: RR1
+        bottom:
+          row_net: RL3
+          mirror.row_net: RR3
+          adjust.shift: [0, -3column_stagger]
+    thumbs:
+      mirror:
+        ref: thumbs_near_only
+        distance: -2 thumbs_x_offset + u
+      anchor:
+        ref: matrix_inner_home
+        shift: [thumbs_x_offset, thumbs_y_offset]
+      columns:
+        near:
+          key:
+            column_net: CT3
+            mirror.column_net: CT8
+        home:
+          key:
+            spread: 21.11
+            stagger: -3.52
+            splay: -18.952
+            column_net: CT4
+            mirror.column_net: CT7
+        far:
+          key:
+            spread: 21.11
+            stagger: -3.52
+            splay: -18.952
+            column_net: CT5
+            mirror.column_net: CT6
+      rows:
+        only:
+          row_net: RLT4
+          mirror.row_net: RRT4
+outlines:
+  main_outline:
+    keys:
+      what: rectangle
+      where: 
+        - /matrix_.*/
+      size: [sw, sh]
+      corner: 1
+    column_connections:
+      what: rectangle
+      where:
+        - /matrix_.*_home/
+      size: [10, 26]      
+    pinky_to_ring:
+      what: rectangle
+      where:
+        ref: matrix_pinky_home
+        shift: [sw/2, sh/2 - 1.5]
+      size: [8, 3]
+    mirror_pinky_to_ring:
+      what: rectangle
+      where:
+        ref: mirror_matrix_pinky_home
+        shift: [sw/2, sh/2 - 1.5]
+      size: [8, 3]
+    ring_to_pinky:
+      what: rectangle
+      where:
+        ref: matrix_ring_home
+        shift: [-sw/2, -sh/2 + 1.5]
+      size: [8, 3]
+    mirror_ring_to_pinky:
+      what: rectangle
+      where:
+        ref: mirror_matrix_ring_home
+        shift: [-sw/2, -sh/2 + 1.5]
+      size: [8, 3]
+    ring_to_middle:
+      what: rectangle
+      where:
+        ref: matrix_ring_home
+        shift: [sw/2 - 0.5 , sh/2 - 0.5]
+      size: [1, 1]
+    mirror_ring_to_middle:
+      what: rectangle
+      where:
+        ref: mirror_matrix_ring_home
+        shift: [sw/2 - 0.5 , sh/2 - 0.5]
+      size: [1, 1]
+    middle_to_ring:
+      what: rectangle
+      where:
+        ref: matrix_middle_home
+        shift: [-sw/2, -sh/2 + 5.802]
+      size: [7.546, 11.604]
+    mirror_middle_to_ring:
+      what: rectangle
+      where:
+        ref: mirror_matrix_middle_home
+        shift: [-sw/2, -sh/2 + 5.802]
+      size: [7.546, 11.604]
+    middle_to_index:
+      what: rectangle
+      where:
+        ref: matrix_middle_home
+        shift: [sw/2, -sh/2 + 6]
+      size: [4, 12]
+    mirror_middle_to_index:
+      what: rectangle
+      where:
+        ref: mirror_matrix_middle_home
+        shift: [sw/2, -sh/2 + 6]
+      size: [4, 12]
+    index_to_inner:
+      what: rectangle
+      where:
+        ref: matrix_index_home
+        shift: [sw/2, -sh/2 + 4.5]
+      size: [4, 9]
+    mirror_index_to_inner:
+      what: rectangle
+      where:
+        ref: mirror_matrix_index_home
+        shift: [sw/2, -sh/2 + 4.5]
+      size: [4, 9]
+  _thumbs:
+    thumb_keys:
+      what: rectangle
+      where: 
+        - /thumbs_.*/
+      size: [sw, sh]
+    mcu:
+      what: rectangle
+      where: 
+        ref: thumbs_near_only
+        shift: [-(xiao_width + sw)/2 - xiao_x_offset - mcu_x_offset, (mcu_height - sh)/2]
+      size: [xiao_width + 2xiao_x_offset, mcu_height]
+    mirror_mcu:
+      what: rectangle
+      where: 
+        ref: mirror_thumbs_near_only
+        shift: [-(xiao_width + sw)/2 - xiao_x_offset - mcu_x_offset, (mcu_height - sh)/2]
+      size: [xiao_width + 2xiao_x_offset, mcu_height]
+    mcu_switches:
+      what: rectangle
+      where: 
+        ref: thumbs_near_only
+        shift: [-(mcu_width + sw)/2 - mcu_x_offset, -0.5sh + 3]
+      size: [mcu_width, 6]
+    mirror_mcu_switches:
+      what: rectangle
+      where: 
+        ref: mirror_thumbs_near_only
+        shift: [-(mcu_width + sw)/2 - mcu_x_offset, -0.5sh + 3]
+      size: [mcu_width, 6]
+    thumb_to_mcu:
+      what: rectangle
+      where:
+        ref: thumbs_near_only
+        shift: [-(sw + mcu_x_offset)/2, 0]
+      size: [mcu_x_offset + 2, sh]
+    mirror_thumb_to_mcu:
+      what: rectangle
+      where:
+        ref: mirror_thumbs_near_only
+        shift: [-(sw + mcu_x_offset)/2, 0]
+      size: [mcu_x_offset + 2, sh]
+    near_to_home:
+      what: polygon
+      points:
+        - ref: thumbs_near_only
+          shift: [0.5sw, 0.5sh]
+        - ref: thumbs_near_only
+          shift: [0.5sw, -0.5sh]
+        - ref: thumbs_home_only
+          shift: [-0.5sw, -0.5sh]
+        - ref: thumbs_home_only
+          shift: [-0.5sw, 0.5sh]
+    mirror_near_to_home:
+      what: polygon
+      points:
+        - ref: mirror_thumbs_near_only
+          shift: [0.5sw, 0.5sh]
+        - ref: mirror_thumbs_near_only
+          shift: [0.5sw, -0.5sh]
+        - ref: mirror_thumbs_home_only
+          shift: [-0.5sw, -0.5sh]
+        - ref: mirror_thumbs_home_only
+          shift: [-0.5sw, 0.5sh]
+    home_to_far:
+      what: polygon
+      points:
+        - ref: thumbs_home_only
+          shift: [0.5sw, 0.5sh]
+        - ref: thumbs_home_only
+          shift: [0.5sw, -0.5sh]
+        - ref: thumbs_far_only
+          shift: [-0.5sw, -0.5sh]
+        - ref: thumbs_far_only
+          shift: [-0.5sw, 0.5sh]
+    mirror_home_to_far:
+      what: polygon
+      points:
+        - ref: mirror_thumbs_home_only
+          shift: [0.5sw, 0.5sh]
+        - ref: mirror_thumbs_home_only
+          shift: [0.5sw, -0.5sh]
+        - ref: mirror_thumbs_far_only
+          shift: [-0.5sw, -0.5sh]
+        - ref: mirror_thumbs_far_only
+          shift: [-0.5sw, 0.5sh]
+  thumbs_outline:
+    - name: _thumbs
+      fillet: 1 
+  bridges:
+    middle_top_bridge:
+      what: rectangle
+      where:
+        aggregate.parts:
+          - matrix_inner_top
+          - mirror_matrix_inner_top
+        shift: [0, -1.5]
+      size: [1, 9]
+    middle_bottom_bridge:
+      what: rectangle
+      where:
+        aggregate.parts:
+          - matrix_inner_bottom
+          - mirror_matrix_inner_bottom
+        shift: [0, -1.5]
+      size: [1, 9]
+    top_left_bridge:
+      what: rectangle
+      where:
+        ref: matrix_middle_top
+        shift: [0, 0.5sh + 0.5]
+      size: [9, 1.2]
+    top_right_bridge:
+      what: rectangle
+      where:
+        ref: mirror_matrix_middle_top
+        shift: [0, 0.5sh + 0.5]
+      size: [9, 1.2]
+  plate:
+    - main_outline
+    - thumbs_outline
+    - bridges
+pcbs:
+  matrix_pcb:
+    outlines:
+      main:
+        outline: plate
+    footprints:
+      keys:
+        what: gateron_lowprofile
+        where: 
+          - /matrix_.*/
+        params:
+          from: "{{column_net}}"
+          to: "{{row_net}}"
+          hotswap: true
+          diode: true
+          diode_shift: [7.5, 0]
+          diode_via: true
+      thumb_keys:
+        what: gateron_lowprofile
+        where: 
+          - /thumbs_.*/
+        params:
+          from: "{{column_net}}"
+          to: "{{row_net}}"
+          hotswap: true
+          diode: true
+          diode_shift: [7.5, 0]
+          diode_via: false
+      column_routes:
+        what: colroute
+        where:
+          - /matrix_.*_home/
+        params:
+          net: "{{column_net}}"
+          stagger: column_stagger
+          route_offset: 1.6
+      left_socket:
+        what: clamshell_socket
+        where:
+          ref: matrix_index_home
+          shift: [0, -7]
+          rotate: 180
+        params:
+          side: 'B'
+          P1: 'RL3'
+          P2: 'RL2'
+          P3: 'RL1'
+          P4: 'C5'
+          P5: 'C4'
+          P6: 'C3'
+          P7: 'C2'
+          P8: 'C1'
+      left_mcu:
+        what: xiao_nrf
+        where:
+          ref: thumbs_near_only
+          shift: [-0.5(sw + xiao_width) - mcu_x_offset - xiao_x_offset, (xiao_height - sh)/2 + 0.5]
+          rotate: 180
+        params:
+          side: 'F'
+          P1: 'CT1'
+          P2: 'CT2'
+          P3: 'CT3'
+          P4: 'CT4'
+          P5: 'CT5'
+          P7: 'RLT1'
+          P8: 'RLT2'
+          P9: 'RLT3'
+          P10: 'RLT4'
+      left_thumbs_socket:
+        what: clamshell_socket
+        where:
+          ref: thumbs_near_only
+          shift: [-u, 10]
+        params:
+          side: 'B'
+          P1: 'CT1'
+          P2: 'CT2'
+          P3: 'CT3'
+          P4: 'CT4'
+          P5: 'CT5'
+          P6: 'RLT1'
+          P7: 'RLT2'
+          P8: 'RLT3'
+      left_power_switch:
+        what: switch_power
+        where:
+          ref: thumbs_near_only
+          shift: [-2u + 4, -0.5sh + 1.8]
+          rotate: 270
+        params:
+          from: 'BAT_P'
+          to: 'BATP'       
+      left_reset_switch:
+        what: switch_reset
+        where:
+          ref: thumbs_near_only
+          shift: [-0.5(sw + xiao_width) - mcu_x_offset - xiao_x_offset, -0.5sh + 2.2]
+          rotate: 270
+        params:
+          side: 'B'
+      left_battery_connector:
+        what: battery_pad
+        where:
+          ref: thumbs_near_only
+          shift: [-2u - 2.5, -5.4]
+          rotate: 90
+        params:
+          pos: 'BAT_P'
+          neg: 'BATN'
+      left_mounthole:
+        what: mountinghole
+        where:
+          ref: thumbs_home_only
+          shift: [0.5sw + 1.8, 0]   
+      right_socket:
+        what: clamshell_socket
+        where:
+          ref: mirror_matrix_index_home
+          shift: [0, -7]
+          rotate: 180
+        params:
+          side: 'B'
+          P1: 'C10'
+          P2: 'C9'
+          P3: 'C8'
+          P4: 'C7'
+          P5: 'C6'
+          P6: 'RR1'
+          P7: 'RR2'
+          P8: 'RR3'
+      right_mcu:
+        what: xiao_nrf
+        where:
+          ref: mirror_thumbs_near_only
+          shift: [-0.5(sw + xiao_width) - mcu_x_offset - xiao_x_offset, (xiao_height - sh)/2 + 0.5]
+          rotate: 180
+        params:
+          side: 'F'
+          P1: 'CT10'
+          P2: 'CT9'
+          P3: 'CT8'
+          P4: 'CT7'
+          P5: 'CT6'
+          P7: 'RRT1'
+          P8: 'RRT2'
+          P9: 'RRT3'
+          P10: 'RRT4'
+          BATP: 'RBATP'
+          BATN: 'RBATN'
+          GND: 'RGND'
+          RST: 'RRST'
+          P0: 'RP0'
+          P6: 'RP6'
+          RAW3V3: 'RRAW3V3'
+          RAW5V: 'RRAW5V'
+          CLK: 'RCLK'
+          DIO: 'RDIO'
+      right_thumbs_socket:
+        what: clamshell_socket
+        where:
+          ref: mirror_thumbs_near_only
+          shift: [-u, 10]
+        params:
+          side: 'B'
+          P1: 'RRT3'
+          P2: 'RRT2'
+          P3: 'RRT1'
+          P4: 'CT6'
+          P5: 'CT7'
+          P6: 'CT8'
+          P7: 'CT9'
+          P8: 'CT10'
+      right_power_switch:
+        what: switch_power
+        where:
+          ref: mirror_thumbs_near_only
+          shift: [-2u + 4, -0.5sh + 1.8]
+          rotate: 90
+        params:
+          from: 'RBATP'
+          to: 'RBAT_P'       
+      right_reset_switch:
+        what: switch_reset
+        where:
+          ref: mirror_thumbs_near_only
+          shift: [-0.5(sw + xiao_width) - mcu_x_offset - xiao_x_offset, -0.5sh + 2.2]
+          rotate: 90
+        params:
+          side: 'B'
+          from: 'RGND'
+          to: 'RRST'
+      right_battery_connector:
+        what: battery_pad
+        where:
+          ref: mirror_thumbs_near_only
+          shift: [-2u - 2.5, -5.4]
+          rotate: 270
+        params:
+          pos: 'RBAT_P'
+          neg: 'RBATN'        
+      right_mounthole:
+        what: mountinghole
+        where:
+          ref: mirror_thumbs_home_only
+          shift: [0.5sw + 1.8, 0]   
+      middle_top_bridge_holes:
+        what: bridgeholes
+        where:
+          aggregate.parts:
+            - matrix_inner_top
+            - mirror_matrix_inner_top
+          rotate: 90
+          shift: [0, -1.5]
+      middle_bottom_bridge_holes:
+        what: bridgeholes
+        where:
+          aggregate.parts:
+            - matrix_inner_bottom
+            - mirror_matrix_inner_bottom
+          rotate: 90
+          shift: [0, -1.5]
+      top_left_bridge_holes:
+        what: bridgeholes
+        where:
+          ref: matrix_middle_top
+          shift: [0, 0.5sh + 0.5]
+      top_right_bridge_holes:
+        what: bridgeholes
+        where:
+          ref: mirror_matrix_middle_top
+          shift: [0, 0.5sh + 0.5]
+

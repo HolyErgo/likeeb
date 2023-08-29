@@ -3,7 +3,7 @@ meta:
   version: rev1.2
 units:
   column_stagger: 20.97
-  column_connection_width: 5.2
+  column_connection_width: 2
   sw: 18
   sh: 16
   mcu_width: 33

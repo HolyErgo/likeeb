@@ -1,4 +1,4 @@
-// HKW Clamshell Socket x8 0.5mm pitch
+// FPC Socket x8 0.5mm pitch
 
 module.exports = {
   params: {
@@ -13,7 +13,7 @@ module.exports = {
     P8: {type: 'net', value: 'P8'},
   },
   body:   p => `
-    (module "HKWClamshellSocket" (layer "${p.side}.Cu") (tedit 613ABEDD)
+    (module "HKW FPC Socket" (layer "${p.side}.Cu") (tedit 613ABEDD)
       ${ p.at /* parametric position */ }
 
       ${'' /* footprint reference */}

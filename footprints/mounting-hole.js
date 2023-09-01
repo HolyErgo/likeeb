@@ -1,5 +1,5 @@
 // MountingHole_2.2mm_M2_Pad_Via
-// TODO add more sizes as param?
+
 module.exports = {
   params: {
       class: 'HOLE',

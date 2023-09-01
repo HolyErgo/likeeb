@@ -296,7 +296,7 @@ pcbs:
     outlines.main.outline: left_matrix
     footprints:
       keys:
-        what: gateron_lowprofile
+        what: gateron-lowprofile
         where: 
           - /^matrix_.*/
         params:
@@ -307,7 +307,7 @@ pcbs:
           diode_shift: [7.5, 0]
           diode_via: false
       left_socket:
-        what: clamshell_socket
+        what: fpc-socket
         where:
           ref: matrix_index_home
           shift: [0, -6.9]
@@ -326,7 +326,7 @@ pcbs:
     outlines.main.outline: right_matrix
     footprints:
       keys:
-        what: gateron_lowprofile
+        what: gateron-lowprofile
         where: 
           - /mirror_matrix_.*/
         params:
@@ -337,7 +337,7 @@ pcbs:
           diode_shift: [7.5, 0]
           diode_via: false
       socket:
-        what: clamshell_socket
+        what: fpc-socket
         where:
           ref: mirror_matrix_index_home
           shift: [0, -6.9]
@@ -356,7 +356,7 @@ pcbs:
     outlines.main.outline: left_thumbs
     footprints:
       keys:
-        what: gateron_lowprofile
+        what: gateron-lowprofile
         where: 
           - /^thumbs_.*/
         params:
@@ -367,7 +367,7 @@ pcbs:
           diode_shift: [7.5, 0]
           diode_via: false
       mcu:
-        what: xiao_ble
+        what: xiao-ble
         where:
           ref: thumbs_near_only
           shift: [-0.5(sw + xiao_width) - mcu_x_offset - xiao_x_offset, (xiao_height - sh)/2 + 0.5]
@@ -375,7 +375,6 @@ pcbs:
         params:
           side: 'F'
           holes: false
-          nfc: true
           P1: 'CT1'
           P2: 'CT2'
           P3: 'CT3'
@@ -386,7 +385,7 @@ pcbs:
           P9: 'RLT3'
           P10: 'RLT4'
       socket:
-        what: clamshell_socket
+        what: fpc-socket
         where:
           ref: thumbs_near_only
           shift: [-u, 10]
@@ -401,7 +400,7 @@ pcbs:
           P7: 'RLT2'
           P8: 'RLT3'
       power_switch:
-        what: switch_power
+        what: switch-power
         where:
           ref: thumbs_near_only
           shift: [-2u + 4, -0.5sh + 1.8]
@@ -410,7 +409,7 @@ pcbs:
           from: 'BAT_P'
           to: 'BATP'       
       reset_switch:
-        what: switch_reset
+        what: switch-reset
         where:
           ref: thumbs_near_only
           shift: [-0.5(sw + xiao_width) - mcu_x_offset - xiao_x_offset, -0.5sh + 2.2]
@@ -418,7 +417,7 @@ pcbs:
         params:
           side: 'B'
       battery_connector:
-        what: battery_pad
+        what: battery-pad
         where:
           ref: thumbs_near_only
           shift: [-2u - 2.5, -5.4]
@@ -427,7 +426,7 @@ pcbs:
           pos: 'BAT_P'
           neg: 'GND'
       mounthole:
-        what: mountinghole
+        what: mounting-hole
         where:
           ref: thumbs_home_only
           shift: [0.5sw + 1.8, 0]   
@@ -435,7 +434,7 @@ pcbs:
     outlines.main.outline: right_thumbs
     footprints:
       keys:
-        what: gateron_lowprofile
+        what: gateron-lowprofile
         where: 
           - /mirror_thumbs_.*/
         params:
@@ -446,7 +445,7 @@ pcbs:
           diode_shift: [7.5, 0]
           diode_via: false
       mcu:
-        what: xiao_ble
+        what: xiao-ble
         where:
           ref: mirror_thumbs_near_only
           shift: [-0.5(sw + xiao_width) - mcu_x_offset - xiao_x_offset, (xiao_height - sh)/2 + 0.5]
@@ -471,7 +470,7 @@ pcbs:
           RAW3V3: 'RRAW3V3'
           RAW5V: 'RRAW5V'
       socket:
-        what: clamshell_socket
+        what: fpc-socket
         where:
           ref: mirror_thumbs_near_only
           shift: [-u, 10]
@@ -486,7 +485,7 @@ pcbs:
           P7: 'CT9'
           P8: 'CT10'
       power_switch:
-        what: switch_power
+        what: switch-power
         where:
           ref: mirror_thumbs_near_only
           shift: [-2u + 4, -0.5sh + 1.8]
@@ -495,7 +494,7 @@ pcbs:
           from: 'RBATP'
           to: 'RBAT_P'       
       reset_switch:
-        what: switch_reset
+        what: switch-reset
         where:
           ref: mirror_thumbs_near_only
           shift: [-0.5(sw + xiao_width) - mcu_x_offset - xiao_x_offset, -0.5sh + 2.2]
@@ -505,7 +504,7 @@ pcbs:
           from: 'RGND'
           to: 'RRST'
       battery_connector:
-        what: battery_pad
+        what: battery-pad
         where:
           ref: mirror_thumbs_near_only
           shift: [-2u - 2.5, -5.4]
@@ -514,7 +513,7 @@ pcbs:
           pos: 'RBAT_P'
           neg: 'RGND'        
       mounthole:
-        what: mountinghole
+        what: mounting-hole
         where:
           ref: mirror_thumbs_home_only
           shift: [0.5sw + 1.8, 0]   

@@ -3,7 +3,7 @@ meta:
   version: rev1.2
 units:
   column_stagger: 20.97
-  column_connection_width: 2
+  column_connection_width: 5.2
   sw: 18
   sh: 16
   mcu_width: 33
@@ -367,13 +367,15 @@ pcbs:
           diode_shift: [7.5, 0]
           diode_via: false
       mcu:
-        what: xiao_nrf
+        what: xiao_ble
         where:
           ref: thumbs_near_only
           shift: [-0.5(sw + xiao_width) - mcu_x_offset - xiao_x_offset, (xiao_height - sh)/2 + 0.5]
           rotate: 180
         params:
           side: 'F'
+          holes: false
+          nfc: true
           P1: 'CT1'
           P2: 'CT2'
           P3: 'CT3'
@@ -383,7 +385,6 @@ pcbs:
           P8: 'RLT2'
           P9: 'RLT3'
           P10: 'RLT4'
-          BATN: 'GND'
       socket:
         what: clamshell_socket
         where:
@@ -445,13 +446,14 @@ pcbs:
           diode_shift: [7.5, 0]
           diode_via: false
       mcu:
-        what: xiao_nrf
+        what: xiao_ble
         where:
           ref: mirror_thumbs_near_only
           shift: [-0.5(sw + xiao_width) - mcu_x_offset - xiao_x_offset, (xiao_height - sh)/2 + 0.5]
           rotate: 180
         params:
           side: 'F'
+          holes: false
           P1: 'CT10'
           P2: 'CT9'
           P3: 'CT8'
@@ -462,15 +464,12 @@ pcbs:
           P9: 'RRT3'
           P10: 'RRT4'
           BATP: 'RBATP'
-          BATN: 'RGND'
           GND: 'RGND'
           RST: 'RRST'
           P0: 'RP0'
           P6: 'RP6'
           RAW3V3: 'RRAW3V3'
           RAW5V: 'RRAW5V'
-          CLK: 'RCLK'
-          DIO: 'RDIO'
       socket:
         what: clamshell_socket
         where:

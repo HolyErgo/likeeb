@@ -1,6 +1,8 @@
 // Seeduino XIAO with vias and edge cuts for underside pads
 // By default includes pads and holes for all side pins and holes and edge cuts for BAT+, RST and GND underside Xiao pads
-// Inspired by https://github.com/ImStuBTW/ergogen-v4-footprints/ 
+// Inspired by 
+
+
 //
 // Params
 //    side: default is 'F'
@@ -93,11 +95,29 @@ module.exports = {
         ${'' /* Reset */}
         (pad "" thru_hole circle (at ${pos_left}1.27 -6.033) (size 1.4 1.4) (drill 1) (layers *.Cu *.Mask) ${p.RST.str})
         (pad "" thru_hole circle (at ${pos_right}1.27 -6.033) (size 1.4 1.4) (drill 1) (layers *.Cu *.Mask) ${p.GND.str})
-        (fp_rect (start -1.52 -8.822) (end 1.52 -5.782) (layer Edge.Cuts) (width 0.12) (fill none))
+        (fp_line (start -1.02 -8.822) (end 1.02 -8.822) (layer Edge.Cuts) (width 0.1))
+        (fp_line (start 1.02 -8.822) (end 1.02 -8.322) (layer Edge.Cuts) (width 0.1))
+        (fp_line (start 1.02 -8.322) (end 1.52 -8.322) (layer Edge.Cuts) (width 0.1))
+        (fp_line (start 1.52 -8.322) (end 1.52 -6.282) (layer Edge.Cuts) (width 0.1))
+        (fp_line (start 1.52 -6.282) (end 1.02 -6.282) (layer Edge.Cuts) (width 0.1))
+        (fp_line (start 1.02 -6.282) (end 1.02 -5.782) (layer Edge.Cuts) (width 0.1))
+        (fp_line (start 1.02 -5.782) (end -1.02 -5.782) (layer Edge.Cuts) (width 0.1))
+        (fp_line (start -1.02 -5.782) (end -1.02 -6.282) (layer Edge.Cuts) (width 0.1))
+        (fp_line (start -1.02 -6.282) (end -1.52 -6.282) (layer Edge.Cuts) (width 0.1))
+        (fp_line (start -1.52 -6.282) (end -1.52 -8.322) (layer Edge.Cuts) (width 0.1))
+        (fp_line (start -1.52 -8.322) (end -1.02 -8.322) (layer Edge.Cuts) (width 0.1))
+        (fp_line (start -1.02 -8.322) (end -1.02 -8.822) (layer Edge.Cuts) (width 0.1))
         
         ${'' /* Battery + */}
         (pad "" thru_hole circle (at ${pos_left}4.445 -0.317) (size 1.4 1.4) (drill 1) (layers *.Cu *.Mask) ${p.BATP.str})
-        (fp_rect (start ${pos_left}4.695 -2.472) (end ${pos_left}2.032 -0.067) (layer Edge.Cuts) (width 0.12) (fill none))
+        (fp_line (start ${pos_left}4.195 -2.472) (end ${pos_left}2.032 -2.472) (layer Edge.Cuts) (width 0.1))
+        (fp_line (start ${pos_left}2.032 -2.472) (end ${pos_left}2.032 -0.067) (layer Edge.Cuts) (width 0.1))
+        (fp_line (start ${pos_left}2.032 -0.067) (end ${pos_left}4.195 -0.067) (layer Edge.Cuts) (width 0.1))
+        (fp_line (start ${pos_left}4.195 -0.067) (end ${pos_left}4.195 -0.567) (layer Edge.Cuts) (width 0.1))
+        (fp_line (start ${pos_left}4.195 -0.567) (end ${pos_left}4.695 -0.567) (layer Edge.Cuts) (width 0.1))
+        (fp_line (start ${pos_left}4.695 -0.567) (end ${pos_left}4.695 -1.972) (layer Edge.Cuts) (width 0.1))
+        (fp_line (start ${pos_left}4.695 -1.972) (end ${pos_left}4.195 -1.972) (layer Edge.Cuts) (width 0.1))
+        (fp_line (start ${pos_left}4.195 -1.972) (end ${pos_left}4.195 -2.472) (layer Edge.Cuts) (width 0.1))
       `
         
     const battery_minus = `
@@ -134,7 +154,14 @@ module.exports = {
         ${'' /* NFC  */}
         (pad "" thru_hole circle (at ${pos_right}3.8 8.8) (size 1.4 1.4) (drill 1) (layers *.Cu *.Mask) ${p.NFC0.str})
         (pad "" thru_hole circle (at ${pos_right}5.7 8.8) (size 1.4 1.4) (drill 1) (layers *.Cu *.Mask) ${p.NFC1.str})
-        (fp_rect (start ${pos_right}3.6 6.388) (end ${pos_right}5.9 9) (layer Edge.Cuts) (width 0.12) (fill none))
+        (fp_line (start ${pos_right}3.6 6.388) (end ${pos_right}5.9 6.388) (layer Edge.Cuts) (width 0.1))
+        (fp_line (start ${pos_right}5.9 6.388) (end ${pos_right}5.9 8.5) (layer Edge.Cuts) (width 0.1))
+        (fp_line (start ${pos_right}5.9 8.5) (end ${pos_right}5.4 8.5) (layer Edge.Cuts) (width 0.1))
+        (fp_line (start ${pos_right}5.4 8.5) (end ${pos_right}5.4 9) (layer Edge.Cuts) (width 0.1))
+        (fp_line (start ${pos_right}5.4 9) (end ${pos_right}4.1 9) (layer Edge.Cuts) (width 0.1))
+        (fp_line (start ${pos_right}4.1 9) (end ${pos_right}4.1 8.5) (layer Edge.Cuts) (width 0.1))
+        (fp_line (start ${pos_right}4.1 8.5) (end ${pos_right}3.6 8.5) (layer Edge.Cuts) (width 0.1))
+        (fp_line (start ${pos_right}3.6 8.5) (end ${pos_right}3.6 6.388) (layer Edge.Cuts) (width 0.1))
       `
 
     const bottom = `    

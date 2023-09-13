@@ -1494,6 +1494,12 @@
     (stroke (width 0.15) (type solid)) (layer "Edge.Cuts") (tstamp fe62136e-ef3e-45ff-ae39-9067f1343777))
   (gr_line (start 236.291967 66.91441) (end 243.291967 66.91441)
     (stroke (width 0.15) (type solid)) (layer "Edge.Cuts") (tstamp feb1c4ca-b057-468e-a06d-09e5cff1d64f))
+  (gr_text "right" (at 233.48 86.84) (layer "Edge.Cuts") (tstamp 7e28a615-dd30-4a46-86d2-cb69bdd1d63f)
+    (effects (font (size 1 1) (thickness 0.15)) (justify left bottom))
+  )
+  (gr_text "LIKEeb" (at 231.51 85.38) (layer "Edge.Cuts") (tstamp a79f15a9-00ba-4d42-badf-d17e8f5da781)
+    (effects (font (size 1.5 1.5) (thickness 0.15) italic) (justify left bottom))
+  )
 
   (segment (start 238.27059 84.80941) (end 242.27059 80.80941) (width 0.25) (layer "F.Cu") (net 1) (tstamp 17c0e897-05fa-4601-9669-e2dc24456351))
   (segment (start 255.841396 90.405) (end 256.320305 90.405) (width 0.25) (layer "F.Cu") (net 1) (tstamp 1b3a96ee-7d2c-4ee5-8311-c199b3a63710))

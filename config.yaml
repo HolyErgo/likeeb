@@ -1,14 +1,14 @@
 meta:
   author: nikservik
-  version: rev1.2
+  version: rev1.3
 units:
   column_stagger: 20.97
-  column_connection_width: 5.2
+  column_connection_width: 2
   sw: 18
   sh: 16
-  mcu_width: 33
+  mcu_width: 23.5
   mcu_height: 21.6
-  mcu_x_offset: 0
+  mcu_x_offset: 1
   xiao_width: 18.5
   xiao_height: 21
   xiao_x_offset: 1
@@ -403,11 +403,12 @@ pcbs:
         what: switch-power
         where:
           ref: thumbs_near_only
-          shift: [-2u + 4, -0.5sh + 1.8]
+          shift: [-0.5sw - 1, -0.5sh + 1.8]
           rotate: 270
         params:
-          from: 'BAT_P'
-          to: 'BATP'       
+          side: 'B'
+          from: 'BATP'
+          to: 'BAT_P'       
       reset_switch:
         what: switch-reset
         where:
@@ -420,7 +421,7 @@ pcbs:
         what: battery-pad
         where:
           ref: thumbs_near_only
-          shift: [-2u - 2.5, -5.4]
+          shift: [-0.5sw - xiao_width - 2xiao_x_offset - mcu_x_offset - 1.5, -5]
           rotate: 90
         params:
           pos: 'BAT_P'
@@ -488,11 +489,12 @@ pcbs:
         what: switch-power
         where:
           ref: mirror_thumbs_near_only
-          shift: [-2u + 4, -0.5sh + 1.8]
+          shift: [-0.5sw - 1, -0.5sh + 1.8]
           rotate: 90
         params:
-          from: 'RBATP'
-          to: 'RBAT_P'       
+          side: 'B'
+          from: 'RBAT_P'
+          to: 'RBATP'       
       reset_switch:
         what: switch-reset
         where:
@@ -507,7 +509,7 @@ pcbs:
         what: battery-pad
         where:
           ref: mirror_thumbs_near_only
-          shift: [-2u - 2.5, -5.4]
+          shift: [-0.5sw - xiao_width - 2xiao_x_offset - mcu_x_offset - 1.5, -5.4]
           rotate: 270
         params:
           pos: 'RBAT_P'

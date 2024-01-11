@@ -1,0 +1,207 @@
+layers:
+  Base:
+  - [Q, W, E, R, T, Y, U, I, O, P]
+  - - {t: A, h: '$$mdi:apple-keyboard-control$$'}
+    - {t: S, h: '$$mdi:apple-keyboard-option$$'}
+    - {t: D, h: '$$mdi:apple-keyboard-command$$'}
+    - {t: F, h: '$$mdi:apple-keyboard-shift$$'}
+    - G
+    - H
+    - {t: J, h: '$$mdi:apple-keyboard-shift$$'}
+    - {t: K, h: '$$mdi:apple-keyboard-command$$'}
+    - {t: L, h: '$$mdi:apple-keyboard-option$$'}
+    - {t: ;, h: '$$mdi:apple-keyboard-control$$'}
+  - [Z, X, C, V, B, N, M, ',', ., /]
+  - - {t: '$$mdi:keyboard-space$$', h: Nav}
+    - {t: '$$mdi:keyboard-tab$$', h: Fun}
+    - {t: '$$mdi:keyboard-esc$$', h: Media}
+    - {t: '$$mdi:keyboard-return$$', h: Sym}
+    - $$mdi:apple-keyboard-shift$$
+    - {t: '$$mdi:backspace$$', h: Num}
+  Media:
+  - - {type: trans}
+    - {type: trans}
+    - {type: trans}
+    - {type: trans}
+    - {type: trans}
+    - $$mdi:volume-high$$
+    - {type: trans}
+    - {type: trans}
+    - {type: trans}
+    - '&bootloader'
+  - - $$mdi:apple-keyboard-control$$
+    - $$mdi:apple-keyboard-option$$
+    - $$mdi:apple-keyboard-command$$
+    - $$mdi:apple-keyboard-shift$$
+    - {type: trans}
+    - $$mdi:volume-low$$
+    - $$mdi:skip-previous$$
+    - $$mdi:play-pause$$
+    - $$mdi:skip-next$$
+    - {type: trans}
+  - - {type: trans}
+    - {type: trans}
+    - {type: trans}
+    - {type: trans}
+    - {type: trans}
+    - $$mdi:volume-off$$
+    - {t: '$$mdi:bluetooth-connect$$', h: '0'}
+    - {t: '$$mdi:bluetooth-connect$$', h: '1'}
+    - {t: '$$mdi:bluetooth-connect$$', h: '2'}
+    - {t: '$$mdi:bluetooth-connect$$', h: '3'}
+  - - {type: trans}
+    - {type: trans}
+    - {type: held}
+    - {type: trans}
+    - {type: trans}
+    - {type: trans}
+  Sym:
+  - - '`'
+    - '@'
+    - (
+    - )
+    - '!'
+    - =>
+    - {type: trans}
+    - {type: trans}
+    - {type: trans}
+    - {type: trans}
+  - ['#', '?', '[', ']', '&', $this->, '$$mdi:apple-keyboard-shift$$', '$$mdi:apple-keyboard-command$$', '$$mdi:apple-keyboard-option$$', '$$mdi:apple-keyboard-control$$']
+  - - /
+    - \
+    - <
+    - '>'
+    - '|'
+    - ->
+    - {type: trans}
+    - {type: trans}
+    - {type: trans}
+    - {type: trans}
+  - - $
+    - {type: trans}
+    - {type: trans}
+    - {type: held}
+    - {type: trans}
+    - {type: trans}
+  Num:
+  - - ^
+    - '7'
+    - '8'
+    - '9'
+    - '='
+    - {type: trans}
+    - {type: trans}
+    - {type: trans}
+    - {type: trans}
+    - {type: trans}
+  - - '*'
+    - '4'
+    - '5'
+    - '6'
+    - +
+    - {type: trans}
+    - $$mdi:apple-keyboard-shift$$
+    - $$mdi:apple-keyboard-command$$
+    - $$mdi:apple-keyboard-option$$
+    - $$mdi:apple-keyboard-control$$
+  - - /
+    - '1'
+    - '2'
+    - '3'
+    - '-'
+    - {type: trans}
+    - {type: trans}
+    - {type: trans}
+    - {type: trans}
+    - {type: trans}
+  - - '0'
+    - $$mdi:keyboard-space$$
+    - .
+    - {type: trans}
+    - {type: trans}
+    - {type: held}
+  Nav:
+  - - {type: trans}
+    - {type: trans}
+    - {type: trans}
+    - {type: trans}
+    - {type: trans}
+    - Page Up
+    - Home
+    - $$mdi:arrow-up-bold$$
+    - End
+    - $$mdi:redo$$
+  - - $$mdi:apple-keyboard-control$$
+    - $$mdi:apple-keyboard-option$$
+    - $$mdi:apple-keyboard-command$$
+    - $$mdi:apple-keyboard-shift$$
+    - {type: trans}
+    - Page Down
+    - $$mdi:arrow-left-bold$$
+    - $$mdi:arrow-down-bold$$
+    - $$mdi:arrow-right-bold$$
+    - $$mdi:undo$$
+  - - {type: trans}
+    - {type: trans}
+    - {type: trans}
+    - {type: trans}
+    - {type: trans}
+    - {type: trans}
+    - $$mdi:content-paste$$
+    - $$mdi:content-copy$$
+    - $$mdi:content-cut$$
+    - $$mdi:apple-keyboard-caps$$
+  - - {type: held}
+    - {type: trans}
+    - {type: trans}
+    - {type: trans}
+    - {type: trans}
+    - {type: trans}
+  Fun:
+  - - {type: trans}
+    - {type: trans}
+    - {type: trans}
+    - {type: trans}
+    - {type: trans}
+    - {type: trans}
+    - F7
+    - F8
+    - F9
+    - F12
+  - - $$mdi:apple-keyboard-control$$
+    - $$mdi:apple-keyboard-option$$
+    - $$mdi:apple-keyboard-command$$
+    - $$mdi:apple-keyboard-shift$$
+    - {type: trans}
+    - {type: trans}
+    - F4
+    - F5
+    - F6
+    - F11
+  - - {type: trans}
+    - {type: trans}
+    - {type: trans}
+    - {type: trans}
+    - {type: trans}
+    - $$mdi:monitor-screenshot$$
+    - F1
+    - F2
+    - F3
+    - F10
+  - - {type: trans}
+    - {type: held}
+    - {type: trans}
+    - {type: trans}
+    - {type: trans}
+    - {type: trans}
+combos:
+- p: [20, 10]
+  k: $$tabler:world$$
+- p: [0, 10]
+  k: \
+- p: [9, 19]
+  k: '['
+- p: [8, 18]
+  k: ']'
+- p: [19, 29]
+  k: ''''

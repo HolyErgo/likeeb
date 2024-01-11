@@ -1,0 +1,125 @@
+layout:
+  qmk_info_json: likeeb.json
+layers:
+  Base:
+  - [Й, Ц, У, К, Е, Н, Г, Ш, Щ, З]
+  - - {t: Ф, h: '$$mdi:apple-keyboard-control$$'}
+    - {t: Ы, h: '$$mdi:apple-keyboard-option$$'}
+    - {t: В, h: '$$mdi:apple-keyboard-command$$'}
+    - {t: А, h: '$$mdi:apple-keyboard-shift$$'}
+    - П
+    - Р
+    - {t: О, h: '$$mdi:apple-keyboard-shift$$'}
+    - {t: Л, h: '$$mdi:apple-keyboard-command$$'}
+    - {t: Д, h: '$$mdi:apple-keyboard-option$$'}
+    - {t: Ж, h: '$$mdi:apple-keyboard-control$$'}
+  - [Я, Ч, С, М, И, Т, Ь, Б, Ю, {tap: ., shifted: ','}]
+  - - {t: '$$mdi:keyboard-space$$', h: Nav}
+    - {t: '$$mdi:keyboard-tab$$', h: Fun}
+    - {t: '$$mdi:keyboard-esc$$', h: Media}
+    - {t: '$$mdi:keyboard-return$$', h: Sym}
+    - $$mdi:apple-keyboard-shift$$
+    - {t: '$$mdi:backspace$$', h: Num}
+  Num:
+  - - ^
+    - {tap: '7', shifted: '?'}
+    - {tap: '8', shifted: '*'}
+    - {tap: '9', shifted: '('}
+    - '='
+    - {type: trans}
+    - {type: trans}
+    - {type: trans}
+    - {type: trans}
+    - {type: trans}
+  - - '*'
+    - {tap: '4', shifted: ';'}
+    - {tap: '5', shifted: '%'}
+    - {tap: '6', shifted: ':'}
+    - +
+    - {type: trans}
+    - $$mdi:apple-keyboard-shift$$
+    - $$mdi:apple-keyboard-command$$
+    - $$mdi:apple-keyboard-option$$
+    - $$mdi:apple-keyboard-control$$
+  - - /
+    - {tap: '1', shifted: '!'}
+    - {tap: '2', shifted: '"'}
+    - {tap: '3', shifted: '№'}
+    - '-'
+    - {type: trans}
+    - {type: trans}
+    - {type: trans}
+    - {type: trans}
+    - {type: trans}
+  - - {tap: '0', shifted: ')'}
+    - $$mdi:keyboard-space$$
+    - Ю
+    - {type: trans}
+    - {type: trans}
+    - {type: held}
+  Nav:
+  - - {type: trans}
+    - {type: trans}
+    - {type: trans}
+    - {type: trans}
+    - {type: trans}
+    - Page Up
+    - Home
+    - $$mdi:arrow-up-bold$$
+    - End
+    - $$mdi:redo$$
+  - - $$mdi:apple-keyboard-control$$
+    - $$mdi:apple-keyboard-option$$
+    - $$mdi:apple-keyboard-command$$
+    - $$mdi:apple-keyboard-shift$$
+    - {type: trans}
+    - Page Down
+    - $$mdi:arrow-left-bold$$
+    - $$mdi:arrow-down-bold$$
+    - $$mdi:arrow-right-bold$$
+    - $$mdi:undo$$
+  - - {type: trans}
+    - {type: trans}
+    - {type: trans}
+    - {type: trans}
+    - {type: trans}
+    - {type: trans}
+    - $$mdi:content-paste$$
+    - $$mdi:content-copy$$
+    - $$mdi:content-cut$$
+    - $$mdi:apple-keyboard-caps$$
+  - - {type: held}
+    - {type: trans}
+    - {type: trans}
+    - {type: trans}
+    - {type: trans}
+    - {type: trans}
+combos:
+- p: [20, 10]
+  k: $$tabler:world$$
+  l: [Base]
+  a: left
+  o: -0.2
+  d: false
+  r: -10
+- p: [9, 19]
+  k: 'Х'
+  l: [Base]
+  a: right
+  o: -0.2
+  d: false
+  r: 10
+- p: [8, 18]
+  k: 'Ъ'
+  l: [Base]
+  a: right
+  o: -0.2
+  d: false
+  r: 5
+- p: [19, 29]
+  k: 'Э'
+  l: [Base]
+  a: right
+  o: -0.2
+  d: false
+  r: 10

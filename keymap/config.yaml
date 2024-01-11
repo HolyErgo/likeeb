@@ -35,7 +35,7 @@ draw_config:
 
     /* font and background color specifications */
     svg.keymap {
-        font-family: Quicksand, avenir, sans-serif;
+        font-family: REM,SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace;
         font-size: 14px;
         font-kerning: normal;
         text-rendering: optimizeLegibility;
@@ -133,7 +133,8 @@ draw_config:
   glyph_tap_size: 14
   glyph_hold_size: 12
   glyph_shifted_size: 10
-  glyphs: {}
+  glyphs: 
+    BACKSPACE: $$tabler:backspace-filled$$
   glyph_urls:
     tabler: https://unpkg.com/@tabler/icons/icons/{}.svg
     mdi: https://raw.githubusercontent.com/Templarian/MaterialDesign-SVG/master/svg/{}.svg
@@ -143,11 +144,15 @@ draw_config:
 parse_config:
   preprocess: true
   skip_binding_parsing: false
-  raw_binding_map: {}
+  raw_binding_map: 
+    "&kp LS(LG(N4))": $$mdi:monitor-screenshot$$
+    "&m_darrow": '=>'
+    "&m_this": '$this->'
+    "&m_arrow": '->'
   sticky_label: sticky
   toggle_label: toggle
   trans_legend:
-    t: ▽
+    t: ''
     type: trans
   mark_alternate_layer_activators: false
   qmk_remove_keycode_prefix:
@@ -285,4 +290,88 @@ parse_config:
     NON_US_HASH: '#'
     NUHS: '#'
     TILDE2: '~'
+
+    # Modifiers
+    LCTRL: $$mdi:apple-keyboard-control$$
+    LALT: $$mdi:apple-keyboard-option$$
+    LSHIFT: $$mdi:apple-keyboard-shift$$
+    LSHFT: $$mdi:apple-keyboard-shift$$
+    LCMD: $$mdi:apple-keyboard-command$$
+    LGUI: $$mdi:apple-keyboard-command$$
+    RCTRL: $$mdi:apple-keyboard-control$$
+    RALT: $$mdi:apple-keyboard-option$$
+    RSHIFT: $$mdi:apple-keyboard-shift$$
+    RSHFT: $$mdi:apple-keyboard-shift$$
+    RCMD: $$mdi:apple-keyboard-command$$
+    RGUI: $$mdi:apple-keyboard-command$$
+    # "Meh" key
+    LS(LC(LALT)): $$mdi:star-three-points$$
+
+    LG(Z): $$mdi:undo$$
+    LG(LS(Z)): $$mdi:redo$$
+
+    LG(B): $$mdi:content-paste$$
+    LG(C): $$mdi:content-copy$$
+    LG(X): $$mdi:content-cut$$
+
+    LG(LS(N4)): $$mdi:monitor-screenshot$$
+
+    LC(SPACE): $$tabler:world$$
+
+    # Arrows
+    UP: $$mdi:arrow-up-bold$$
+    DOWN: $$mdi:arrow-down-bold$$
+    LEFT: $$mdi:arrow-left-bold$$
+    RIGHT: $$mdi:arrow-right-bold$$
+    PG_UP: 'Page Up'
+    PG_DN: 'Page Down'
+    HOME: 'Home'
+    END: 'End'
+
+    # Whitespace
+    ENTER:
+      type: enter
+      tap: $$mdi:keyboard-return$$
+    RETURN:
+      type: enter
+      tap: $$mdi:keyboard-return$$
+    ESC: $$mdi:keyboard-esc$$
+    TAB: $$mdi:keyboard-tab$$
+    LS(TAB): $$mdi:keyboard-tab-reverse$$
+    SPACE: $$mdi:keyboard-space$$
+    BACKSPACE:
+      type: backspace
+      tap: $$mdi:backspace$$
+    BSPC:
+      type: backspace
+      tap: $$mdi:backspace$$
+    DELETE: $$mdi:backspace-reverse-outline$$
+    DEL: $$mdi:backspace-reverse-outline$$
+
+    # Locks
+    CAPSLOCK: $$mdi:apple-keyboard-caps$$
+    CAPS: $$mdi:apple-keyboard-caps$$
+
+    # Sound
+    C_MUTE: $$mdi:volume-off$$
+    C_VOL_UP: $$mdi:volume-high$$
+    C_VOL_DN: $$mdi:volume-low$$
+
+    # Media
+    C_NEXT: $$mdi:skip-next$$
+    C_PREV: $$mdi:skip-previous$$
+    C_PP: $$mdi:play-pause$$
+
+    # Bluetooth
+    BT_CLR: $$mdi:bluetooth-off$$
+    BT_SEL: $$mdi:bluetooth-connect$$
+
+    # Settings
+    C_BRI_UP: $$mdi:brightness-5$$
+    C_BRI_DN: $$mdi:brightness-7$$
+
+    # System
+    C_POWER: $$mdi:power-standby$$
+    C_AL_LOCK: $$mdi:lock$$
+    K_CANCEL: $$mdi:close-box$$
   zmk_combos: {}

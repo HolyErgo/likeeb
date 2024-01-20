@@ -82,13 +82,13 @@ svg.keymap {
     font-size: 14px;
     font-kerning: normal;
     text-rendering: optimizeLegibility;
-    fill: #24292e;
+    fill: #000;
 }
 
 /* default key styling */
 rect.key {
-    fill: #f6f8fa;
-    stroke: #c9cccf;
+    fill: lightgray;
+    stroke: gray;
     stroke-width: 1;
 }
 
@@ -99,12 +99,12 @@ rect.side {
 
 /* color accent for combo boxes */
 rect.combo, rect.combo-separate {
-    fill: #cdf;
+    fill: #abf;
 }
 
 /* color accent for held keys */
 rect.held, rect.combo.held {
-    fill: #fdd;
+    fill: #f99;
 }
 
 /* color accent for ghost (optional) keys */

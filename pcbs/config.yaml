@@ -57,14 +57,14 @@ points:
             mirror.column_net: C6
       rows:
         home:
-          row_net: RL2
-          mirror.row_net: RR2
+          row_net: R2
+          mirror.row_net: R2
         top:
-          row_net: RL1
-          mirror.row_net: RR1
+          row_net: R1
+          mirror.row_net: R1
         bottom:
-          row_net: RL3
-          mirror.row_net: RR3
+          row_net: R3
+          mirror.row_net: R3
           adjust.shift: [0, -3column_stagger]
     thumbs:
       mirror:
@@ -76,26 +76,25 @@ points:
       columns:
         near:
           key:
-            column_net: CT3
-            mirror.column_net: CT8
+            column_net: C3
+            mirror.column_net: C8
         home:
           key:
             spread: 21.11
             stagger: -3.52
             splay: -18.952
-            column_net: CT4
-            mirror.column_net: CT7
+            column_net: C4
+            mirror.column_net: C7
         far:
           key:
             spread: 21.11
             stagger: -3.52
             splay: -18.952
-            column_net: CT5
-            mirror.column_net: CT6
+            column_net: C5
+            mirror.column_net: C6
       rows:
         only:
-          row_net: RLT4
-          mirror.row_net: RRT4
+          row_net: R4
 outlines:
   left_matrix:
     keys:
@@ -314,9 +313,9 @@ pcbs:
           rotate: 180
         params:
           side: 'B'
-          P1: 'RL3'
-          P2: 'RL2'
-          P3: 'RL1'
+          P1: 'R3'
+          P2: 'R2'
+          P3: 'R1'
           P4: 'C5'
           P5: 'C4'
           P6: 'C3'
@@ -349,9 +348,9 @@ pcbs:
           P3: 'C8'
           P4: 'C7'
           P5: 'C6'
-          P6: 'RR1'
-          P7: 'RR2'
-          P8: 'RR3'
+          P6: 'R1'
+          P7: 'R2'
+          P8: 'R3'
   left_thumbs:
     outlines.main.outline: left_thumbs
     footprints:
@@ -361,11 +360,22 @@ pcbs:
           - /^thumbs_.*/
         params:
           from: "{{column_net}}"
-          to: "{{row_net}}"
+          to: "{{row_net}}_{{column_net}}"
           hotswap: true
-          diode: true
+          diode: false
           diode_shift: [7.5, 0]
           diode_via: false
+      diode_set:
+        what: diode-3set
+        where:
+          ref: thumbs_near_only
+          shift: [0.5sw, -2]
+          rotate: 270
+        params:
+          from1: 'R4_C3'
+          from2: 'R4_C4'
+          from3: 'R4_C5'
+          to: 'R4'
       mcu:
         what: xiao-ble
         where:
@@ -375,15 +385,15 @@ pcbs:
         params:
           side: 'F'
           holes: false
-          P1: 'CT1'
-          P2: 'CT2'
-          P3: 'CT3'
-          P4: 'CT4'
-          P5: 'CT5'
-          P7: 'RLT1'
-          P8: 'RLT2'
-          P9: 'RLT3'
-          P10: 'RLT4'
+          P1: 'C1'
+          P2: 'C2'
+          P3: 'C3'
+          P4: 'C4'
+          P5: 'C5'
+          P7: 'R1'
+          P8: 'R2'
+          P9: 'R3'
+          P10: 'R4'
       socket:
         what: fpc-socket
         where:
@@ -391,32 +401,34 @@ pcbs:
           shift: [-u, 10]
         params:
           side: 'B'
-          P1: 'CT1'
-          P2: 'CT2'
-          P3: 'CT3'
-          P4: 'CT4'
-          P5: 'CT5'
-          P6: 'RLT1'
-          P7: 'RLT2'
-          P8: 'RLT3'
+          P1: 'C1'
+          P2: 'C2'
+          P3: 'C3'
+          P4: 'C4'
+          P5: 'C5'
+          P6: 'R1'
+          P7: 'R2'
+          P8: 'R3'
       power_switch:
         what: switch-power
         where:
           ref: thumbs_near_only
-          shift: [-0.5sw - 1, -0.5sh + 1.8]
-          rotate: 270
+          shift: [-0.5sw + 1, -1]
+          rotate: 90
         params:
           side: 'B'
           from: 'BATP'
           to: 'BAT_P'       
       reset_switch:
-        what: switch-reset
+        what: button
         where:
           ref: thumbs_near_only
-          shift: [-0.5(sw + xiao_width) - mcu_x_offset - xiao_x_offset, -0.5sh + 2.2]
-          rotate: 270
+          shift: [-0.5(sw + xiao_width) - mcu_x_offset - xiao_x_offset - 3, 1]
+          rotate: 0
         params:
           side: 'B'
+          from: 'GND'
+          to: 'RST'
       battery_connector:
         what: battery-pad
         where:
@@ -430,7 +442,9 @@ pcbs:
         what: mounting-hole
         where:
           ref: thumbs_home_only
-          shift: [0.5sw + 1.8, 0]   
+          shift: [0.5sw + 1.8, 0]
+        params:
+          via: false
   right_thumbs:
     outlines.main.outline: right_thumbs
     footprints:
@@ -440,11 +454,22 @@ pcbs:
           - /mirror_thumbs_.*/
         params:
           from: "{{column_net}}"
-          to: "{{row_net}}"
+          to: "{{row_net}}_{{column_net}}"
           hotswap: true
-          diode: true
+          diode: false
           diode_shift: [7.5, 0]
           diode_via: false
+      diode_set:
+        what: diode-3set
+        where:
+          ref: mirror_thumbs_near_only
+          shift: [0.5sw, -2]
+          rotate: 270
+        params:
+          from1: 'R4_C6'
+          from2: 'R4_C7'
+          from3: 'R4_C8'
+          to: 'R4'
       mcu:
         what: xiao-ble
         where:
@@ -454,22 +479,22 @@ pcbs:
         params:
           side: 'F'
           holes: false
-          P1: 'CT10'
-          P2: 'CT9'
-          P3: 'CT8'
-          P4: 'CT7'
-          P5: 'CT6'
-          P7: 'RRT1'
-          P8: 'RRT2'
-          P9: 'RRT3'
-          P10: 'RRT4'
-          BATP: 'RBATP'
-          GND: 'RGND'
-          RST: 'RRST'
-          P0: 'RP0'
-          P6: 'RP6'
-          RAW3V3: 'RRAW3V3'
-          RAW5V: 'RRAW5V'
+          P1: 'C10'
+          P2: 'C9'
+          P3: 'C8'
+          P4: 'C7'
+          P5: 'C6'
+          P7: 'R1'
+          P8: 'R2'
+          P9: 'R3'
+          P10: 'R4'
+          BATP: 'BATP'
+          GND: 'GND'
+          RST: 'RST'
+          P0: 'P0'
+          P6: 'P6'
+          RAW3V3: 'RAW3V3'
+          RAW5V: 'RAW5V'
       socket:
         what: fpc-socket
         where:
@@ -477,34 +502,34 @@ pcbs:
           shift: [-u, 10]
         params:
           side: 'B'
-          P1: 'RRT3'
-          P2: 'RRT2'
-          P3: 'RRT1'
-          P4: 'CT6'
-          P5: 'CT7'
-          P6: 'CT8'
-          P7: 'CT9'
-          P8: 'CT10'
+          P1: 'R3'
+          P2: 'R2'
+          P3: 'R1'
+          P4: 'C6'
+          P5: 'C7'
+          P6: 'C8'
+          P7: 'C9'
+          P8: 'C10'
       power_switch:
         what: switch-power
         where:
           ref: mirror_thumbs_near_only
-          shift: [-0.5sw - 1, -0.5sh + 1.8]
-          rotate: 90
+          shift: [-0.5sw + 1, -1]
+          rotate: 270
         params:
           side: 'B'
-          from: 'RBAT_P'
-          to: 'RBATP'       
+          from: 'BAT_P'
+          to: 'BATP'       
       reset_switch:
-        what: switch-reset
+        what: button
         where:
           ref: mirror_thumbs_near_only
-          shift: [-0.5(sw + xiao_width) - mcu_x_offset - xiao_x_offset, -0.5sh + 2.2]
-          rotate: 90
+          shift: [-0.5(sw + xiao_width) - mcu_x_offset - xiao_x_offset + 3, 1]
+          rotate: 0
         params:
           side: 'B'
-          from: 'RGND'
-          to: 'RRST'
+          from: 'GND'
+          to: 'RST'
       battery_connector:
         what: battery-pad
         where:
@@ -512,10 +537,12 @@ pcbs:
           shift: [-0.5sw - xiao_width - 2xiao_x_offset - mcu_x_offset - 1.5, -5.4]
           rotate: 270
         params:
-          pos: 'RBAT_P'
-          neg: 'RGND'        
+          pos: 'BAT_P'
+          neg: 'GND'        
       mounthole:
         what: mounting-hole
         where:
           ref: mirror_thumbs_home_only
-          shift: [0.5sw + 1.8, 0]   
+          shift: [0.5sw + 1.8, 0]
+        params:
+          via: false

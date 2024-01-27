@@ -1,11 +1,11 @@
 meta:
   author: nikservik
-  version: rev1.3
+  version: rev1.4
 units:
   column_stagger: 20.97
   column_connection_width: 2
   sw: 18
-  sh: 16
+  sh: 17
   mcu_width: 23.5
   mcu_height: 21.6
   mcu_x_offset: 1
@@ -14,6 +14,11 @@ units:
   xiao_x_offset: 1
   thumbs_x_offset: 62
   thumbs_y_offset: 49
+  pinky_to_ring_spread: 21.556
+  pinky_to_ring_stagger: 11.395
+  ring_to_middle_spread: 21.411
+  ring_to_middle_stagger: 3.297
+  diode_set_pitch: 1.8
 points:
   zones:
     matrix:
@@ -32,15 +37,15 @@ points:
         ring:
           key:
             splay: -5
-            stagger: 11.395
-            spread: 21.556
+            stagger: pinky_to_ring_stagger
+            spread: pinky_to_ring_spread
             column_net: C2
             mirror.column_net: C9
         middle:
           key:
             splay: -5
-            stagger: 3.297
-            spread: 21.411
+            stagger: ring_to_middle_stagger
+            spread: ring_to_middle_spread
             column_net: C3
             mirror.column_net: C8
         index:
@@ -130,20 +135,20 @@ outlines:
       what: rectangle
       where:
         ref: matrix_middle_home
-        shift: [-sw/2, -sh/2 + 5.802]
-      size: [7.546, 11.604]
+        shift: [-sw/2, -2.198]
+      size: [(column_stagger + sh/2) * 0.178 + ring_to_middle_spread - u, sh - 4.396]
     middle_to_index:
       what: rectangle
       where:
         ref: matrix_middle_home
-        shift: [sw/2, -sh/2 + 6]
-      size: [4, 12]
+        shift: [sw/2, -2]
+      size: [4, sh - 4]
     index_to_inner:
       what: rectangle
       where:
         ref: matrix_index_home
-        shift: [sw/2, -sh/2 + 4.5]
-      size: [4, 9]
+        shift: [sw/2, -3.5]
+      size: [4, sh - 7]
   right_matrix:
     keys:
       what: rectangle
@@ -178,20 +183,20 @@ outlines:
       what: rectangle
       where:
         ref: mirror_matrix_middle_home
-        shift: [-sw/2, -sh/2 + 5.802]
-      size: [7.546, 11.604]
+        shift: [-sw/2, -2.198]
+      size: [(column_stagger + sh/2) * 0.178 + ring_to_middle_spread - u, sh - 4.396]
     mirror_middle_to_index:
       what: rectangle
       where:
         ref: mirror_matrix_middle_home
-        shift: [sw/2, -sh/2 + 6]
-      size: [4, 12]
+        shift: [sw/2, -2]
+      size: [4, sh - 4]
     mirror_index_to_inner:
       what: rectangle
       where:
         ref: mirror_matrix_index_home
-        shift: [sw/2, -sh/2 + 4.5]
-      size: [4, 9]
+        shift: [sw/2, -3.5]
+      size: [4, sh - 7]
   _left_thumbs:
     thumb_keys:
       what: rectangle
@@ -295,16 +300,13 @@ pcbs:
     outlines.main.outline: left_matrix
     footprints:
       keys:
-        what: gateron-lowprofile
+        what: chocV2
         where: 
           - /^matrix_.*/
         params:
           from: "{{column_net}}"
-          to: "{{row_net}}"
+          to: "{{row_net}}_{{column_net}}"
           hotswap: true
-          diode: true
-          diode_shift: [7.5, 0]
-          diode_via: false
       left_socket:
         what: fpc-socket
         where:
@@ -321,20 +323,92 @@ pcbs:
           P6: 'C3'
           P7: 'C2'
           P8: 'C1'
+      pinky_diode_set:
+        what: diode-3set
+        where:
+          ref: matrix_middle_home
+          shift: [-0.5sw - 2, -0.5sh + 1.5diode_set_pitch + 0.3]
+          rotate: 90
+        params:
+          from1: 'R3_C1'
+          from2: 'R2_C1'
+          from3: 'R1_C1'
+          to1: 'R3'
+          to2: 'R2'
+          to3: 'R1'
+          via: true
+          pitch: diode_set_pitch
+      ring_diode_set:
+        what: diode-3set
+        where:
+          ref: matrix_middle_home
+          shift: [-0.5sw + 4, -0.5sh + 1.5diode_set_pitch + 0.3]
+          rotate: 90
+        params:
+          from1: 'R3_C2'
+          from2: 'R2_C2'
+          from3: 'R1_C2'
+          to1: 'R3'
+          to2: 'R2'
+          to3: 'R1'
+          via: true
+          pitch: diode_set_pitch
+      middle_diode_set:
+        what: diode-3set
+        where:
+          ref: matrix_middle_home
+          shift: [0.5sw - 3, -0.5sh + 1.5diode_set_pitch + 0.3]
+          rotate: 90
+        params:
+          from1: 'R3_C3'
+          from2: 'R2_C3'
+          from3: 'R1_C3'
+          to1: 'R3'
+          to2: 'R2'
+          to3: 'R1'
+          via: true
+          pitch: diode_set_pitch
+      index_diode_set:
+        what: diode-3set
+        where:
+          ref: matrix_inner_home
+          shift: [-0.5sw - 2.5, 0.5sh - 1.5diode_set_pitch - 0.5]
+          rotate: 270
+        params:
+          from1: 'R1_C4'
+          from2: 'R2_C4'
+          from3: 'R3_C4'
+          to1: 'R1'
+          to2: 'R2'
+          to3: 'R3'
+          via: true
+          pitch: diode_set_pitch
+      inner_diode_set:
+        what: diode-3set
+        where:
+          ref: matrix_inner_home
+          shift: [-0.5sw + 3.5, 1]
+          rotate: 270
+        params:
+          from1: 'R1_C5'
+          from2: 'R2_C5'
+          from3: 'R3_C5'
+          to1: 'R1'
+          to2: 'R2'
+          to3: 'R3'
+          via: true
+          pitch: diode_set_pitch
   right:
     outlines.main.outline: right_matrix
     footprints:
       keys:
-        what: gateron-lowprofile
+        what: chocV2
         where: 
           - /mirror_matrix_.*/
         params:
           from: "{{column_net}}"
-          to: "{{row_net}}"
+          to: "{{row_net}}_{{column_net}}"
           hotswap: true
-          diode: true
-          diode_shift: [7.5, 0]
-          diode_via: false
       socket:
         what: fpc-socket
         where:
@@ -351,25 +425,97 @@ pcbs:
           P6: 'R1'
           P7: 'R2'
           P8: 'R3'
+      pinky_diode_set:
+        what: diode-3set
+        where:
+          ref: mirror_matrix_middle_home
+          shift: [-0.5sw - 2, -0.5sh + 1.5diode_set_pitch + 0.3]
+          rotate: 90
+        params:
+          from1: 'R1_C10'
+          from2: 'R2_C10'
+          from3: 'R3_C10'
+          to1: 'R1'
+          to2: 'R2'
+          to3: 'R3'
+          via: true
+          pitch: diode_set_pitch
+      ring_diode_set:
+        what: diode-3set
+        where:
+          ref: mirror_matrix_middle_home
+          shift: [-0.5sw + 4, -0.5sh + 1.5diode_set_pitch + 0.3]
+          rotate: 90
+        params:
+          from1: 'R1_C9'
+          from2: 'R2_C9'
+          from3: 'R3_C9'
+          to1: 'R1'
+          to2: 'R2'
+          to3: 'R3'
+          via: true
+          pitch: diode_set_pitch
+      middle_diode_set:
+        what: diode-3set
+        where:
+          ref: mirror_matrix_middle_home
+          shift: [0.5sw - 5, -0.5sh + 1.5diode_set_pitch + 0.3]
+          rotate: 90
+        params:
+          from1: 'R1_C8'
+          from2: 'R2_C8'
+          from3: 'R3_C8'
+          to1: 'R1'
+          to2: 'R2'
+          to3: 'R3'
+          via: true
+          pitch: diode_set_pitch
+      index_diode_set:
+        what: diode-3set
+        where:
+          ref: mirror_matrix_middle_home
+          shift: [0.5sw + 1, -0.5sh + 1.5diode_set_pitch + 0.3]
+          rotate: 90
+        params:
+          from1: 'R1_C7'
+          from2: 'R2_C7'
+          from3: 'R3_C7'
+          to1: 'R1'
+          to2: 'R2'
+          to3: 'R3'
+          via: true
+          pitch: diode_set_pitch
+      inner_diode_set:
+        what: diode-3set
+        where:
+          ref: mirror_matrix_index_home
+          shift: [0.5sw - 2, -0.5sh + 1.5diode_set_pitch + 4.3]
+          rotate: 270
+        params:
+          from1: 'R3_C6'
+          from2: 'R2_C6'
+          from3: 'R1_C6'
+          to1: 'R3'
+          to2: 'R2'
+          to3: 'R1'
+          via: true
+          pitch: diode_set_pitch
   left_thumbs:
     outlines.main.outline: left_thumbs
     footprints:
       keys:
-        what: gateron-lowprofile
+        what: chocV2
         where: 
           - /^thumbs_.*/
         params:
           from: "{{column_net}}"
           to: "{{row_net}}_{{column_net}}"
           hotswap: true
-          diode: false
-          diode_shift: [7.5, 0]
-          diode_via: false
       diode_set:
         what: diode-3set
         where:
           ref: thumbs_near_only
-          shift: [0.5sw, -2]
+          shift: [0.5sw - 2, -3]
           rotate: 270
         params:
           from1: 'R4_C3'
@@ -380,7 +526,7 @@ pcbs:
         what: xiao-ble
         where:
           ref: thumbs_near_only
-          shift: [-0.5(sw + xiao_width) - mcu_x_offset - xiao_x_offset, (xiao_height - sh)/2 + 0.5]
+          shift: [-0.5(sw + xiao_width) - mcu_x_offset - xiao_x_offset, (xiao_height - sh)/2]
           rotate: 180
         params:
           side: 'F'
@@ -398,7 +544,7 @@ pcbs:
         what: fpc-socket
         where:
           ref: thumbs_near_only
-          shift: [-u, 10]
+          shift: [-u, -0.5sh + mcu_height - 3.6]
         params:
           side: 'B'
           P1: 'C1'
@@ -413,7 +559,7 @@ pcbs:
         what: switch-power
         where:
           ref: thumbs_near_only
-          shift: [-0.5sw + 1, -1]
+          shift: [-0.5sw + 1, -2]
           rotate: 90
         params:
           side: 'B'
@@ -423,7 +569,7 @@ pcbs:
         what: button
         where:
           ref: thumbs_near_only
-          shift: [-0.5(sw + xiao_width) - mcu_x_offset - xiao_x_offset - 3, 1]
+          shift: [-0.5(sw + xiao_width) - mcu_x_offset - xiao_x_offset - 3, 0]
           rotate: 0
         params:
           side: 'B'
@@ -433,7 +579,7 @@ pcbs:
         what: battery-pad
         where:
           ref: thumbs_near_only
-          shift: [-0.5sw - xiao_width - 2xiao_x_offset - mcu_x_offset - 1.5, -5]
+          shift: [-0.5sw - xiao_width - 2xiao_x_offset - mcu_x_offset - 1.5, -5.4]
           rotate: 90
         params:
           pos: 'BAT_P'
@@ -449,21 +595,18 @@ pcbs:
     outlines.main.outline: right_thumbs
     footprints:
       keys:
-        what: gateron-lowprofile
+        what: chocV2
         where: 
           - /mirror_thumbs_.*/
         params:
           from: "{{column_net}}"
           to: "{{row_net}}_{{column_net}}"
           hotswap: true
-          diode: false
-          diode_shift: [7.5, 0]
-          diode_via: false
       diode_set:
         what: diode-3set
         where:
           ref: mirror_thumbs_near_only
-          shift: [0.5sw, -2]
+          shift: [0.5sw - 2, -3]
           rotate: 270
         params:
           from1: 'R4_C6'
@@ -474,7 +617,7 @@ pcbs:
         what: xiao-ble
         where:
           ref: mirror_thumbs_near_only
-          shift: [-0.5(sw + xiao_width) - mcu_x_offset - xiao_x_offset, (xiao_height - sh)/2 + 0.5]
+          shift: [-0.5(sw + xiao_width) - mcu_x_offset - xiao_x_offset, (xiao_height - sh)/2]
           rotate: 180
         params:
           side: 'F'
@@ -499,7 +642,7 @@ pcbs:
         what: fpc-socket
         where:
           ref: mirror_thumbs_near_only
-          shift: [-u, 10]
+          shift: [-u, -0.5sh + mcu_height - 3.6]
         params:
           side: 'B'
           P1: 'R3'
@@ -514,7 +657,7 @@ pcbs:
         what: switch-power
         where:
           ref: mirror_thumbs_near_only
-          shift: [-0.5sw + 1, -1]
+          shift: [-0.5sw + 1, -2]
           rotate: 270
         params:
           side: 'B'
@@ -524,8 +667,8 @@ pcbs:
         what: button
         where:
           ref: mirror_thumbs_near_only
-          shift: [-0.5(sw + xiao_width) - mcu_x_offset - xiao_x_offset + 3, 1]
-          rotate: 0
+          shift: [-0.5(sw + xiao_width) - mcu_x_offset - xiao_x_offset + 3, 0]
+          rotate: 180
         params:
           side: 'B'
           from: 'GND'

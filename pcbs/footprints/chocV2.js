@@ -5,8 +5,6 @@
 // Params
 //    hotswap: default is false
 //      if true, will include holes and pads for Kailh choc hotswap sockets
-//    reverse: default is false
-//      if true, will flip the footprint such that the pcb can be reversible
 //    keycaps: default is false
 //      if true, will add choc sized keycap box around the footprint
 // 

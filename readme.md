@@ -1,43 +1,39 @@
-# Печать
+# LIKEeb
 
-## Chitubox
+## 36-key split wireless keyboard
 
-После экспорта модели поворачиваю ее по Х на -90, потом по У на 24, центрую и поворачиваю по Х на 28.
+### Faatures
+- 3x5 key matrix + 3 thumb keys
+- highly staggered columns
+- rotated pinky and ring columns
+- dactyl-like curved columns (not rows)
+- Xiao BLE wireless controllers
+- hotswap Gateron and Choc V2 switches
+- 400mAh battery lasts month or more
+- integrated 50-mm magnetic ring
+- 2-color case
+- magnetic sleeve
+- no RGB, ergonomics only
+- height-adapted DES-profile keycaps
 
-В настройках автосаппортов ставлю 
-- лайт
-- плотность 82
-- угол 85
+### Comfort and Ergonomics
 
-После генерации удаляю лишние.
+#### Balanced Ergonomics
 
-Для слайсера устанавливаю
-- время для слоя 2.3
-- время для нижнего слоя 50
+The curve, stagger, and rotation of the columns provide maximum ergonomics. All keys are easily pressed without moving the base of the hand (for M-L hand size).
 
-# Идеи
+Thanks to the low profile, the keyboard is comfortable to use without wrist rests and tents.
 
-+ кнопку ресета можно сделать плоской и вынести дырку на дно
-+ выключатель можно развернуть внутрь и сделать дырку в дне
+Placing the controller under the palm allows for convenient keyboard positioning on either side of a laptop, even on a small café table.
 
-Так я избавлюсь от дырок на торце и подготовлю проект к CNC
+400mAh battery lasts more than a month. I haven’t been able to measure exactly how long, because I always forget when I last charged it :) With the new ZMK firmware using Bluetooth Low Energy protocol, one charge might last 3-4 months.
 
-- добавить ргб-диоды и разводку под них
-	- нужно будет расширять шлейф
-- можно наделать дырок в дне и сделать отдельно подсветку дна
-	- края у меня скошенные, поэтому может получиться очень прикольный эффект
-+ собрать диоды столбца на центральном квадрате
-+ можно вообще все диоды в кучку собрать на один квадрат
-	- нужно будет вести 3 линии строки с каждого столбца вместо одной
-	- можно сначала собрать по столбцам, а потом попробовать сдвинуть
+#### Integrated Magnetic Ring
 
-Новый корпус хотелось бы сделать в openscad, но не уверен, что осилю быстро выстраивать такие сложные фигуры. Можно поучиться у Псеудоку. Народ вон вообще генерирует модели на каких-то фреймворках для опенскада.
+It’s very convenient for designing various mounts. You only need to attach a 0.6mm thick metal ring to the mount. Compared to a magnetic mount, this ring is very thin and much cheaper.
 
-Новый корпус нужно делать ковшиком. Верхняя часть будет вставляться в этот ковшик как крышка. Болтики будут вкручиваться сверху. Только возле батарейки снизу. Можно вообще возле батарейки предусмотреть зацепы, чтобы обойтись без болта. Но с моим ломким пластиком это стремно.
-Нужно еще предусмотреть расчет шумоподавляющей пенки на дно.
+For example, I made a mount for an IKEA garden chair that is only 2mm thick. I simply attached it to the armrest of the chair and created a comfortable workspace.
 
-С учетом моего опыта изгибания платы, нужно немного перестроить упоры. Для центрального ряда нужна центровка по Х и У на нижней части. Сверху прижималки только для изгиба. Верхний ряд должен упираться сокетом. Нижний - платой. Причем в обеих местах нужно клеить шумодав на этот упор.
+#### Convenient Transportation
 
-Посмотрю на качество печати со слоем 0.01, может так можно будет перепечатать кнопки из пластика АБС.
-
-И меня ждет переделка платы для чок В2, если свичи окажутся удобнее. Эти прилично тарабанят.
+The magnetic case connects two halves of the keyboard and protects the keys from accidental presses. I don’t even turn off the keyboard when I put it in my backpack.

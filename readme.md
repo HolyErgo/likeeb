@@ -15,7 +15,8 @@
 - 2-color case
 - magnetic spacer
 - no RGB, ergonomics only
-- height-adapted DES-profile keycaps
+- [height-adapted DES-profile keycaps](https://github.com/HolyErgo/DES-MX-low-profile)
+- [ZMK firmware](https://github.com/HolyErgo/zmk-likeeb)
 
 ![Red and biege likeeb](./images/red_likeeb.jpg)
 ![Navy and blue likeeb](./images/blue_likeeb.jpg)
